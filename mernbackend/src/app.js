@@ -1,5 +1,6 @@
 const express=require("express");
 const path=require("path");
+const hbs=require("hbs");
 const app=express();
 
 require("./db/conn");
@@ -8,15 +9,42 @@ const Register=require("./models/registers");
 const port=process.env.PORT || 3000
 
 const static_path=path.join(__dirname,"../public");
+const view_path=path.join(__dirname,"../views")
+
+
 app.use(express.urlencoded({extended:false}));
 
 app.use(express.json());
 
 app.use(express.static(static_path));
 
+app.set("view engine","hbs");
+app.set("views",view_path);
+app.get("/",(req,res) => {
+    res.render("register");
+});
 // app.get("/",(req,res) => {
 //     res.send("Hello from Gaurav");
 // });
+app.get("/register.hbs",(req,res) => {
+    res.render("register");
+})
+app.get("/index2.hbs",(req,res) => {
+    res.render("index2");
+})
+app.get("/index3.hbs",(req,res) => {
+    res.render("index3");
+})
+app.get("/index4.hbs",(req,res) => {
+    res.render("index4");
+})
+app.get("/index5.hbs",(req,res) => {
+    res.render("index5");
+})
+app.get("/menu.hbs",(req,res) => {
+    res.render("menu");
+})
+
 
 app.post("/register", async (req,res) => {
     try{
@@ -36,7 +64,7 @@ app.post("/register", async (req,res) => {
             })
 
             const registered=await registerEmployee.save();
-            res.status(201);
+            res.status(201).render("index");
 
         }
         else{
