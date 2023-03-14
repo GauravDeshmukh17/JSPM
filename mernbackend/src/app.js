@@ -50,13 +50,48 @@ app.get("/login.hbs",(req,res) => {
     res.render("login");
 })
 
-
+// Registration
 app.post("/register", async (req,res) => {
     try{
         // console.log(req.body.firstname);
         // res.send(req.body.firstname);
+
+        // Send email
         requiredEmail=req.body.email;
+        requiredName=req.body.firstname;
+        requiredPassword=req.body.password;
         console.log(requiredEmail);
+        console.log(requiredName);
+        console.log(requiredPassword);
+        const mail=async () => {
+            let testAccount = await nodemailer.createTestAccount();
+        
+            const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure:false,
+                auth: {
+                    user: 'india17032001@gmail.com',
+                    pass: 'mufyuencdjqorspy'
+                },
+              });
+        
+            const info = await transporter.sendMail({
+                from: '"Gaurav Deshmukh 👻" <gaurav@gmail.com>', // sender address
+                to: [requiredEmail,"gauravdeshmukh1703@gmail.com"], // list of receivers
+                subject: "Hello ✔", // Subject line
+                text: `Congratulations ${requiredName} for successfull registration on BLUE NILE !
+
+                Your Password is : ${requiredPassword}`, 
+                // html: "<b>Hello world?</b>", // html body
+              });
+              
+            console.log("Message sent: %s", info.messageId); 
+        }
+        
+        mail().catch((e) => console.log(e));
+        
+
         const password=req.body.password;
         const cpassword=req.body.confirmpassword;
 
@@ -106,23 +141,17 @@ app.post("/login",async(req,res) => {
 })
 
 
-// Send email
-const sendMail=require("./controllers/sendMail");
+// const sendMail=require("./controllers/sendMail");
 
-app.get("/mail",sendMail);
+// app.get("/mail",sendMail);
 
-const start=async () => {
-    try{
-        app.listen(port,() => {
-            console.log(`server is running at port no ${port}`);
-        });
-    }
-    catch(err){
 
-    }
-}
 
-start();
+app.listen(port,() => {
+    console.log(`server is running at port no ${port}`);
+});
+
+
 
 
 
