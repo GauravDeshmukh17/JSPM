@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+        padding:0;
+        margin:0;
+        font-family: sans-serif;
+    }
+
+    body{
+        background-image: url("./Images/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .login{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .login h1{
+        font-size: 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+
+    .login p{
+        font-size:1.3rem;
+        margin-top: 0.7rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    .login input{
+        font-size: 1rem;
+        padding: 0.8rem 0.7vw;
+        width: 100%;
+        border:0;
+        border-radius:0.8rem;
+        outline:none
+    }
+
+    .login button{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin:1.2rem 0;
+        padding :0.5rem 1rem;
+        width: 30%;
+        border-radius: 1rem;
+        border: 0;
+    }
+
+    .login button:hover{
+        background-color: aqua;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <p>Email :</p>
+            <input type="text" name="email" placeholder="Email">
+            <p>Password :</p>
+            <input type="text" name="password" placeholder="Password">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

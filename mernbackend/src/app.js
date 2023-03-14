@@ -44,6 +44,9 @@ app.get("/index5.hbs",(req,res) => {
 app.get("/menu.hbs",(req,res) => {
     res.render("menu");
 })
+app.get("/login.hbs",(req,res) => {
+    res.render("login");
+})
 
 
 app.post("/register", async (req,res) => {
@@ -75,6 +78,28 @@ app.post("/register", async (req,res) => {
         res.status(400).send(err);
     }
 });
+
+// Login check
+
+app.post("/login",async(req,res) => {
+    try{
+        const email=req.body.email;
+        const password=req.body.password;
+
+        // console.log(`Email is ${email} and password is ${password}`);
+        const useremail=await Register.findOne({email:email});
+        
+        if(useremail.password===password){
+            res.status(201).render("index");
+        }
+        else{
+            res.send("Password is not matching");
+        }
+    }
+    catch(err){
+        res.status(400).send("Invalid Email");
+    }
+})
 
 app.listen(port,() => {
     console.log(`server is running at port no ${port}`);

@@ -9,7 +9,7 @@ nav{
     padding-block-end: 0%;
     background-color:rgb(160, 153, 153);
     border-radius: 1.5vw;
-    width:97vw;
+    width:98vw;
 }
 
 .navbar,.form{
@@ -75,7 +75,7 @@ a{
     text-decoration: none;
 }
 
-a:link,a:visited{
+a:visited{
 
     color: black;
 }
