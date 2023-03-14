@@ -227,21 +227,25 @@ a:link{
 img[src="Images/facebook.png"]{
 
     width:7vw;
+    margin-top: 0.5vw;
 }
 
 img[src="Images/instagram.jpg"]{
 
     width:10vw;
+    margin-top: 0.5vw;
 }
 
 img[src="Images/twitter.png"]{
 
     width:8vw;
+    margin-top: 0.5vw;
 }
 
 img[src="Images/github.png"]{
 
-    width: 10vw;
+    width: 9vw;
+    margin-top: 0.8vw;
 }
 
 .icons{

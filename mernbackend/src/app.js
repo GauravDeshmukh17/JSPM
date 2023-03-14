@@ -1,10 +1,12 @@
 const express=require("express");
 const path=require("path");
 const hbs=require("hbs");
+const nodemailer=require("nodemailer");
 const app=express();
 
 require("./db/conn");
 const Register=require("./models/registers");
+let requiredEmail;
 
 const port=process.env.PORT || 3000
 
@@ -53,6 +55,8 @@ app.post("/register", async (req,res) => {
     try{
         // console.log(req.body.firstname);
         // res.send(req.body.firstname);
+        requiredEmail=req.body.email;
+        console.log(requiredEmail);
         const password=req.body.password;
         const cpassword=req.body.confirmpassword;
 
@@ -79,8 +83,8 @@ app.post("/register", async (req,res) => {
     }
 });
 
-// Login check
 
+// Login check
 app.post("/login",async(req,res) => {
     try{
         const email=req.body.email;
@@ -101,6 +105,24 @@ app.post("/login",async(req,res) => {
     }
 })
 
-app.listen(port,() => {
-    console.log(`server is running at port no ${port}`);
-});
+
+// Send email
+const sendMail=require("./controllers/sendMail");
+
+app.get("/mail",sendMail);
+
+const start=async () => {
+    try{
+        app.listen(port,() => {
+            console.log(`server is running at port no ${port}`);
+        });
+    }
+    catch(err){
+
+    }
+}
+
+start();
+
+
+
