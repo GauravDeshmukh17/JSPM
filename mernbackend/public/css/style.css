@@ -1,20 +1,23 @@
-.navbar{
+nav{
 
     display: flex;
+    justify-content: space-between;
     font-weight: bolder;
     font-size: 2vw;
-    margin-block-end:0%;
-    padding-inline-start:1vw;
-    margin-block-start:0%;
     font-family: 'Monoton', cursive;
-    padding-top:0.5vw;
-    /* padding-bottom:7vw; */
     color:black;
     padding-block-end: 0%;
     background-color:rgb(160, 153, 153);
     border-radius: 1.5vw;
     width:97vw;
-    padding-bottom:0.7vw;
+}
+
+.navbar,.form{
+    display: flex;
+}
+
+ul{
+    margin: 0.5vw;
 }
 
 body{
