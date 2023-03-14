@@ -5,38 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+<style>
+
+    *{
+        padding:0;
+        margin:0;
+        font-family: sans-serif;
+    }
+
+    body{
+        background-image: url("./Images/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .registration-form{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .registration-form h1{
+        font-size: 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+
+    .registration-form p{
+        font-size:1.3rem;
+        margin-top: 0.7rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    .registration-form input{
+        font-size: 1rem;
+        padding: 0.8rem 0.7vw;
+        width: 100%;
+        border:0;
+        border-radius:0.8rem;
+        outline:none
+    }
+
+    .registration-form button{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin:1.2rem 0;
+        padding :0.5rem 1rem;
+        width: 30%;
+        border-radius: 1rem;
+        border: 0;
+    }
+
+    .registration-form button:hover{
+        background-color: aqua;
+    }
+
+</style>
+
 </head>
 <body>
-    <div>
+    <div class="registration-form">
         <h1>Registration Form</h1>
         <form action="/register" method="POST">
-            <div>
-                <p>First Name :</p>
-                <input type="text" name="firstname" placeholder="First Name">
-            </div>
-            <div>
-                <p>Last Name :</p>
-                <input type="text" name="lastname" placeholder="Last Name">
-            </div>
-            <div>
-                <p>Phone :</p>
-                <input type="text" name="phone" placeholder="Phone">
-            </div>
-            <div>
-                <p>Email :</p>
-                <input type="text" name="email" placeholder="Email">
-            </div>
-            <div>
-                <p>Password :</p>
-                <input type="text" name="password" placeholder="Password">
-            </div>
-            <div>
-                <p>Confirm Passwod</p>
-                <input type="text" name="confirmpassword" placeholder="Confirm Password">
-            </div>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
+        
+            <p>First Name :</p>
+            <input type="text" name="firstname" placeholder="First Name">
+            <p>Last Name :</p>
+            <input type="text" name="lastname" placeholder="Last Name">
+            <p>Phone :</p>
+            <input type="text" name="phone" placeholder="Phone">
+            <p>Email :</p>
+            <input type="text" name="email" placeholder="Email">
+            <p>Password :</p>
+            <input type="text" name="password" placeholder="Password">           
+            <p>Confirm Password</p>
+            <input type="text" name="confirmpassword" placeholder="Confirm Password">            
+            <button type="submit">Submit</button>
+            
         </form>
     </div>
 </body>
