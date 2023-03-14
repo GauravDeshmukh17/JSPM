@@ -21,7 +21,7 @@ app.use(express.static(static_path));
 app.set("view engine","hbs");
 app.set("views",view_path);
 app.get("/",(req,res) => {
-    res.render("register");
+    res.render("index");
 });
 // app.get("/",(req,res) => {
 //     res.send("Hello from Gaurav");

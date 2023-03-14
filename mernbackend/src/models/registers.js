@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+let validator=require("validator");
 
 const employeeSchema=new mongoose.Schema({
     firstname : {
@@ -17,7 +18,10 @@ const employeeSchema=new mongoose.Schema({
     email: {
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        validate:(value) => {
+            return validator.isEmail(value);
+        }
     },
     password: {
         type:String,
@@ -28,6 +32,10 @@ const employeeSchema=new mongoose.Schema({
         required:true
     }
 })
+
+employeeSchema.path("phone").validate(function validatePhone(){
+    return (this.phone>999999999);
+});
 
 const Register=new mongoose.model("Register",employeeSchema);
 module.exports=Register;
