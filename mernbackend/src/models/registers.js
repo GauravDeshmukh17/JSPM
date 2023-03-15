@@ -30,6 +30,10 @@ const employeeSchema=new mongoose.Schema({
     confirmpassword: {
         type:String,
         required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now
     }
 })
 

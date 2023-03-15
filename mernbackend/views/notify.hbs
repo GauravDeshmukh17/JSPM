@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
     *{
         padding:0;
         margin:0;
@@ -14,34 +13,34 @@
     }
 
     body{
-        background-image: url("./Images/background.jpg");
+        background-image: url("./Images/background2.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
 
-    .login{
+    .notify{
         position: absolute;
         top:50%;
         left: 50%;
         transform: translate(-50%,-50%);
     }
 
-    .login h1{
+    .notify h1{
         font-size: 2.5rem;
         text-align: center;
         text-transform: uppercase;
         margin-bottom: 1.5rem;
     }
 
-    .login p{
+    .notify p{
         font-size:1.3rem;
         margin-top: 0.7rem;
         margin-bottom: 0.5rem;
         font-weight: 600;
     }
-    .login input{
+    .notify input{
         font-size: 1rem;
         padding: 0.8rem 0.7vw;
         width: 100%;
@@ -50,7 +49,7 @@
         outline:none
     }
 
-    .login button{
+    .notify button{
         font-size: 1.2rem;
         font-weight: bold;
         margin:1.2rem 0;
@@ -58,24 +57,35 @@
         width: 30%;
         border-radius: 1rem;
         border: 0;
+        font-family: 'Monoton', cursive;
     }
 
-    .login button:hover{
-        background-color: aqua;
+    .notify button:hover{
+        background-color: rgb(0, 255, 8);
     }
 
     </style>
 </head>
 <body>
-    <div class="login">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
+
+    <div class="notify">
+        <h1>Absent Status</h1>
+        <form action="/notify" method="POST">
+        
+            <p>First Name :</p>
+            <input type="text" name="firstname" placeholder="First Name">
+            <p>Last Name :</p>
+            <input type="text" name="lastname" placeholder="Last Name">
+            <p>Phone :</p>
+            <input type="text" name="phone" placeholder="Phone">
             <p>Email :</p>
             <input type="text" name="email" placeholder="Email">
-            <p>Password :</p>
-            <input type="text" name="password" placeholder="Password">
-            <button type="submit">Login</button>
+            <p>Mess Id :</p>
+            <input type="text" name="messid" placeholder="Mess Id">                 
+            <button type="submit">Submit</button>
+            
         </form>
     </div>
+
 </body>
 </html>

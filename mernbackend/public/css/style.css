@@ -219,9 +219,25 @@ img[src="Images/thali.jpg"]{
     color: wheat;
 }
 
-a:link{
+.contact a:link{
 
     color: white;
+}
+
+.notify button{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin:1.2rem 0;
+    margin-left:2.5rem;
+    padding :0.5rem 1rem;
+    width: 10%;
+    border-radius: 1rem;
+    border: 0;
+    font-family: 'Monoton',cursive;
+}
+
+.notify button:hover{
+    background-color: blanchedalmond;
 }
 
 img[src="Images/facebook.png"]{

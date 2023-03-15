@@ -49,6 +49,9 @@ app.get("/menu.hbs",(req,res) => {
 app.get("/login.hbs",(req,res) => {
     res.render("login");
 })
+app.get("/notify.hbs",(req,res) => {
+    res.render("notify");
+})
 
 // Registration
 app.post("/register", async (req,res) => {
@@ -127,7 +130,7 @@ app.post("/login",async(req,res) => {
 
         // console.log(`Email is ${email} and password is ${password}`);
         const useremail=await Register.findOne({email:email});
-        
+        // console.log(useremail);
         if(useremail.password===password){
             res.status(201).render("index");
         }
@@ -141,11 +144,57 @@ app.post("/login",async(req,res) => {
 })
 
 
-// const sendMail=require("./controllers/sendMail");
+// Notify
+app.post("/notify",async(req,res) => {
+    try{
+        const email=req.body.email;
+        const requiredMessId=req.body.messid;
+        const user=await Register.findOne({email:email});
+        if(user.email===email){
+            const mail=async () => {
+                let testAccount = await nodemailer.createTestAccount();
+            
+                const transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 587,
+                    secure:false,
+                    auth: {
+                        user: 'india17032001@gmail.com',
+                        pass: 'mufyuencdjqorspy'
+                    },
+                  });
+            
+                const info = await transporter.sendMail({
+                    from: '"Gaurav Deshmukh 👻" <gaurav@gmail.com>', // sender address
+                    to: [requiredEmail,"gauravdeshmukh1703@gmail.com"], // list of receivers
+                    subject: "Absent Status ✔", // Subject line
+                    text:`Mess Id : ${requiredMessId} 
+Name : ${user.firstname}                   
+LastName : ${user.lastname}
+Date : ${user.date}
 
-// app.get("/mail",sendMail);
-
-
+Today i am not going to visit mess so please mark my absentee` ,
+                    // html: "<b>Hello world?</b>", // html body
+                  });
+                  
+                console.log("Message sent: %s", info.messageId); 
+            }
+            
+            mail()
+            .then(function(){
+                res.status(201).render("index");
+            })
+            .catch((e) => console.log(e));
+            
+        }
+        // else{
+        //     res.send("You are not registered , please register");
+        // }
+    }
+    catch(err){
+        res.status(400).send("You are not registered , please register");
+    }
+})
 
 app.listen(port,() => {
     console.log(`server is running at port no ${port}`);
