@@ -6,6 +6,7 @@ const app=express();
 
 require("./db/conn");
 const Register=require("./models/registers");
+const Delivery=require("./models/deliveries");
 let requiredEmail;
 
 const port=process.env.PORT || 3000
@@ -174,8 +175,7 @@ app.post("/notify",async(req,res) => {
                     from: '"Gaurav Deshmukh 👻" <gaurav@gmail.com>', // sender address
                     to: [requiredEmail,"gauravdeshmukh1703@gmail.com"], // list of receivers
                     subject: "Absent Status ✔", // Subject line
-                    text:`Mess Id : ${requiredMessId} 
-Name : ${user.firstname}                   
+                    text:`Name : ${user.firstname}                   
 LastName : ${user.lastname}
 Date : ${user.date}
 
@@ -201,6 +201,29 @@ Today i am not going to visit mess so please mark my absentee` ,
         res.status(400).send("You are not registered , please register");
     }
 })
+
+
+
+// Delivary Address
+app.post("/delivery",async(req,res) => {
+    try{
+        const delivaryAddress=new Delivery({
+            phone:req.body.phone,
+            email:req.body.email,
+            state:req.body.state,
+            district:req.body.district,
+            address:req.body.address,
+            pincode:req.body.pincode
+        })
+
+        const delivered=await delivaryAddress.save();
+        res.status(201).render("index");
+    }
+    catch(err){
+        res.status(400).send(err);
+    }
+})
+
 
 app.listen(port,() => {
     console.log(`server is running at port no ${port}`);

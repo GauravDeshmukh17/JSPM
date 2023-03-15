@@ -5,10 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+        *{
+            padding:0;
+            margin:0;
+            {{!-- font-family: sans-serif; --}}
+            font-family: cursive;
+        }
+
+        body{
+            background-image: url("./Images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .delivery{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .delivery h1{
+            font-size: 2.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery p{
+            font-size:1.3rem;
+            margin-top: 0.7rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .delivery input{
+            font-size: 1rem;
+            padding: 0.8rem 0.7vw;
+            width: 100%;
+            border:0;
+            border-radius:0.8rem;
+            outline:none
+        }
+
+        .delivery button{
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin:1.2rem 0;
+            padding :0.5rem 1rem;
+            width: 30%;
+            border-radius: 1rem;
+            border: 0;
+        }
+
+        .delivery button:hover{
+            background-color: aqua;
+        }
+        
+    </style>
 </head>
 <body>
-    <form action="/delivery">
-        
-    </form>
+    <div class="delivery">
+        <h1>Delivary Address</h1>
+        <form action="/delivery" method="POST">
+            <p>Phone :</p>
+            <input type="text" name="phone" placeholder="Phone">
+            <p>Email :</p>
+            <input type="text" name="email" placeholder="Email">
+            <p>State : </p>
+            <input type="text" name="state" placeholder="State">
+            <p>District : </p>
+            <input type="text" name="district" placeholder="District">
+            <p>Address : </p>
+            <input type="text" name="address" placeholder="Address">
+            <p>Pincode : </p>
+            <input type="text" name="pincode" placeholder="Pincode">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
