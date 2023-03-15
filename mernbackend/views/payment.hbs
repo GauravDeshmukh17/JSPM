@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>            
+
+    <style>
+
+        {{!-- body{
+            background-color: bisque;
+        } --}}
+
+        img[src="Images/PhonePe.jpg"]{
+            height:97.8vh;
+        }
+        .payment{
+            display: flex;
+            font-family: cursive;
+        }
+        .payment p{
+            font-size: 2vw;
+            font-weight: bolder;
+        }
+        .copy{
+            margin-left: 9vw;
+            display: flex;
+            font-family: cursive;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        a:link,a:visited{
+            color: black;
+        }
+
+        a:hover{
+            color: rgb(112, 65, 7);
+        }
+
+        .c2{
+            margin-left: 17.3vw;
+        }
+
+        .c1{
+            margin-left: 6vw;
+        }
+
+        .btn button{
+            margin-left: 9vw;
+            font-family: cursive;
+            font-size: 2vw;
+            border-radius: 1vw;
+            margin-top: 5vw;
+            font-weight: 600;
+        }
+
+        .btn2 button{
+            margin-left: 9vw;
+            font-family: cursive;
+            font-size: 2vw;
+            border-radius: 1vw;
+            margin-top: 5vw;
+            font-weight: 600;
+        }
+
+        button:hover{
+            background-color: rgb(240, 219, 192);;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="payment">
+        <img src="Images/PhonePe.jpg" alt="PhonePe QR">
+        <div>
+            <div class="copy">
+                <p>Online Payment Number : </p>
+                <p id="copy1">&nbsp;9604692451</p>
+                <a href=""><p class="c1" onclick="copyEvent('copy1')"><i class="fa fa-copy"></i></p></a>
+            </div>
+            <div class="copy">
+                <p>UPI ID : </p>
+                <p id="copy2">&nbsp;9604692451@ybl</p>
+                <a class="c2" href=""><p onclick="copyEvent('copy2')"> <i class="fa fa-copy"></i></p></a>
+            </div>
+            <div class="btn">
+                <a href="delivery.hbs"><button>Food Delivery Address</button></a>
+            </div>
+            <div class="btn2">
+                <a href=""><button>Attach Payment Screenshot</button></a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        function copyEvent(id){
+            var str = document.getElementById(id);
+            window.getSelection().selectAllChildren(str);
+            document.execCommand("Copy");
+        }
+
+    </script>
+</body>
+</html>

@@ -52,6 +52,12 @@ app.get("/login.hbs",(req,res) => {
 app.get("/notify.hbs",(req,res) => {
     res.render("notify");
 })
+app.get("/payment.hbs",(req,res) => {
+    res.render("payment");
+})
+app.get("/delivery.hbs",(req,res) => {
+    res.render("delivery");
+})
 
 // Registration
 app.post("/register", async (req,res) => {
