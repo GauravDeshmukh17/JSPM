@@ -70,6 +70,10 @@ li{
     padding-top: 12vw;
 } */
 
+nav a{
+    color: black;
+}
+
 a{
 
     text-decoration: none;
@@ -225,13 +229,13 @@ img[src="Images/thali.jpg"]{
 }
 
 .notify button{
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     font-weight: bold;
-    margin:1.2rem 0;
-    margin-left:3.5rem;
-    padding :0.5rem 1rem;
-    width: 10%;
-    border-radius: 1rem;
+    margin:1.2vw 0;
+    margin-left:3.5vw;
+    padding :0.5vw 1vw;
+    width: 10vw;
+    border-radius:1vw;
     border: 0;
     font-family: 'Monoton',cursive;
 }

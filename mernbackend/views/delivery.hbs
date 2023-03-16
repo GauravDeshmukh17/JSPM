@@ -24,9 +24,12 @@
 
         .delivery{
             position: absolute;
-            top:50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+            margin-left: 32vw;
+            margin-right: 20vw;
+            {{!-- top:50%; --}}
+            {{!-- left: 40vw; --}}
+            {{!-- transform: translate(-50%,-50%); --}}
+            
         }
 
         .delivery h1{
@@ -34,6 +37,7 @@
             text-align: center;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
+            margin-top: 1vw;
         }
 
         .delivery p{
@@ -64,13 +68,27 @@
         .delivery button:hover{
             background-color: aqua;
         }
+
+        a{
+            text-decoration: none;
+            color: rgb(15, 0, 128);
+        }
+
+        a:hover{
+            color:black
+        }
         
     </style>
 </head>
 <body>
     <div class="delivery">
-        <h1>Delivary Address</h1>
+        <h1>Food & Delivary Address</h1>
         <form action="/delivery" method="POST">
+
+            <p>Food :</p>
+            <input type="text" name="food" placeholder="Food to be ordered">
+            <p>Transaction Id :</p>
+            <input type="text" name="transactionid" placeholder="Transaction Id">
             <p>Phone :</p>
             <input type="text" name="phone" placeholder="Phone">
             <p>Email :</p>
@@ -83,6 +101,8 @@
             <input type="text" name="address" placeholder="Address">
             <p>Pincode : </p>
             <input type="text" name="pincode" placeholder="Pincode">
+            <p><a href="https://forms.gle/98RaAvdJd5Q1cbCk7" target="_blank">Upload Payment Screenshot</a></p>
+            <p><input type="text" name="screenshot" placeholder="Type YES after screenshot uploaded"></p>
             <button type="submit">Submit</button>
         </form>
     </div>

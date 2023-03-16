@@ -55,16 +55,7 @@
             font-family: cursive;
             font-size: 2vw;
             border-radius: 1vw;
-            margin-top: 5vw;
-            font-weight: 600;
-        }
-
-        .btn2 button{
-            margin-left: 9vw;
-            font-family: cursive;
-            font-size: 2vw;
-            border-radius: 1vw;
-            margin-top: 5vw;
+            margin-top: 10vw;
             font-weight: 600;
         }
 
@@ -81,18 +72,15 @@
             <div class="copy">
                 <p>Online Payment Number : </p>
                 <p id="copy1">&nbsp;9604692451</p>
-                <a href=""><p class="c1" onclick="copyEvent('copy1')"><i class="fa fa-copy"></i></p></a>
+                <a href="#"><p class="c1" onclick="copyEvent('copy1')"><i class="fa fa-copy"></i></p></a>
             </div>
             <div class="copy">
                 <p>UPI ID : </p>
                 <p id="copy2">&nbsp;9604692451@ybl</p>
-                <a class="c2" href=""><p onclick="copyEvent('copy2')"> <i class="fa fa-copy"></i></p></a>
+                <a class="c2" href="#"><p onclick="copyEvent('copy2')"> <i class="fa fa-copy"></i></p></a>
             </div>
             <div class="btn">
                 <a href="delivery.hbs"><button>Food Delivery Address</button></a>
-            </div>
-            <div class="btn2">
-                <a href=""><button>Attach Payment Screenshot</button></a>
             </div>
         </div>
 
@@ -103,6 +91,7 @@
             var str = document.getElementById(id);
             window.getSelection().selectAllChildren(str);
             document.execCommand("Copy");
+            {{!-- str.style.background-color=white; --}}
         }
 
     </script>

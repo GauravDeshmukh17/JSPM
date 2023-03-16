@@ -2,15 +2,21 @@ const mongoose=require("mongoose");
 let validator=require("validator");
 
 const employeeSchema=new mongoose.Schema({
+    food:{
+        type:String,
+        required:true
+    },
+    transactionid:{
+        type:String,
+        required:true
+    },
     phone : {
         type:Number,
         required:true,
-        unique:true
     },
     email: {
         type:String,
         required:true,
-        unique:true,
         validate:(value) => {
             return validator.isEmail(value);
         }
@@ -29,6 +35,10 @@ const employeeSchema=new mongoose.Schema({
     },
     pincode:{
         type:Number,
+        required:true
+    },
+    screenshot:{
+        type:String,
         required:true
     },
     date:{

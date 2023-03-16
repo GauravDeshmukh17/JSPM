@@ -208,11 +208,14 @@ Today i am not going to visit mess so please mark my absentee` ,
 app.post("/delivery",async(req,res) => {
     try{
         const delivaryAddress=new Delivery({
+            food:req.body.food,
+            transactionid:req.body.transactionid,
             phone:req.body.phone,
             email:req.body.email,
             state:req.body.state,
             district:req.body.district,
             address:req.body.address,
+            screenshot:req.body.screenshot,
             pincode:req.body.pincode
         })
 
