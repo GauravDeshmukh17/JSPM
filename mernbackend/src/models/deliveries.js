@@ -8,6 +8,7 @@ const employeeSchema=new mongoose.Schema({
     },
     transactionid:{
         type:String,
+        unique:true,
         required:true
     },
     phone : {

@@ -133,13 +133,22 @@ h1,h2{
     border-radius: 1.5vw;
 } */
 
-img[src="Images/banner-2.jpg"]{
+/* img[src="Images/banner-2.jpg"]{
 
     width:98.1vw;
     border-radius: 1.5vw;
     margin-top:0.5vw;
     opacity:1000;
+} */
+
+img[src="Images/backgroundJspm.jpg"]{
+
+    width:98.1vw;
+    border-radius: 1.5vw;
+    margin-top:0.3vw;
+    height: 90vh;
 }
+
 
 img[src="Images/salad.jpg"]{
 

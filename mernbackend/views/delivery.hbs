@@ -81,11 +81,23 @@
     </style>
 </head>
 <body>
+
+    {{!-- <script>
+
+        const foodName=require("./menu.hbs");
+
+        let input=document.querySelector("input");
+        input.addEventListener("click",function(){
+            console.log(foodName);
+        })
+
+    </script>   --}}
+
     <div class="delivery">
         <h1>Food & Delivary Address</h1>
         <form action="/delivery" method="POST">
 
-            <p>Food :</p>
+            <p>Food Name :</p>
             <input type="text" name="food" placeholder="Food to be ordered">
             <p>Transaction Id :</p>
             <input type="text" name="transactionid" placeholder="Transaction Id">

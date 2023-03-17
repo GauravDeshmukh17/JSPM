@@ -81,8 +81,8 @@ app.post("/register", async (req,res) => {
                 port: 587,
                 secure:false,
                 auth: {
-                    user: 'india17032001@gmail.com',
-                    pass: 'mufyuencdjqorspy'
+                    user: 'jspmicoer2001@gmail.com',
+                        pass: 'ndqzzlnmqefvercp'
                 },
               });
         
@@ -90,7 +90,7 @@ app.post("/register", async (req,res) => {
                 from: '"Gaurav Deshmukh 👻" <gaurav@gmail.com>', // sender address
                 to: [requiredEmail,"gauravdeshmukh1703@gmail.com"], // list of receivers
                 subject: "Hello ✔", // Subject line
-                text: `Congratulations ${requiredName} for successfull registration on BLUE NILE !
+                text: `Congratulations ${requiredName} for successfull registration on CAFETERIA JSPM CANTEEN !
 
                 Your Password is : ${requiredPassword}`, 
                 // html: "<b>Hello world?</b>", // html body
@@ -166,8 +166,8 @@ app.post("/notify",async(req,res) => {
                     port: 587,
                     secure:false,
                     auth: {
-                        user: 'india17032001@gmail.com',
-                        pass: 'mufyuencdjqorspy'
+                        user: 'jspmicoer2001@gmail.com',
+                        pass: 'ndqzzlnmqefvercp'
                     },
                   });
             
@@ -207,23 +207,101 @@ Today i am not going to visit mess so please mark my absentee` ,
 // Delivary Address
 app.post("/delivery",async(req,res) => {
     try{
-        const delivaryAddress=new Delivery({
-            food:req.body.food,
-            transactionid:req.body.transactionid,
-            phone:req.body.phone,
-            email:req.body.email,
-            state:req.body.state,
-            district:req.body.district,
-            address:req.body.address,
-            screenshot:req.body.screenshot,
-            pincode:req.body.pincode
-        })
 
-        const delivered=await delivaryAddress.save();
-        res.status(201).render("index");
+        const email=req.body.email;
+        const user=await Register.findOne({email:email});
+        if(user.email===email){
+            const delivaryAddress=new Delivery({
+                food:req.body.food,
+                transactionid:req.body.transactionid,
+                phone:req.body.phone,
+                email:req.body.email,
+                state:req.body.state,
+                district:req.body.district,
+                address:req.body.address,
+                screenshot:req.body.screenshot,
+                pincode:req.body.pincode
+            })
+    
+            const delivered=await delivaryAddress.save();
+            
+
+
+            const mail=async () => {
+                let testAccount = await nodemailer.createTestAccount();
+            
+                const transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 587,
+                    secure:false,
+                    auth: {
+                        user: 'jspmicoer2001@gmail.com',
+                        pass: 'ndqzzlnmqefvercp'
+                    },
+                  });
+            
+                const info = await transporter.sendMail({
+                    from: '"Food Delivary 👻" <gaurav@gmail.com>', // sender address
+                    to: "gauravdeshmukh1703@gmail.com", // list of receivers
+                    subject: "Address Details", // Subject line
+                    text: `${user.firstname} had ordered ${req.body.food}
+ 
+Transaction Id : ${req.body.transactionid}  
+Email : ${req.body.email}
+Phone : ${req.body.phone}
+Address : ${req.body.address}   ` 
+                    // html: "<b>Hello world?</b>", // html body
+                  });
+                  
+                console.log("Message sent: %s", info.messageId); 
+            }
+            
+            mail()
+            .then(function(){
+
+                const mail=async () => {
+                    let testAccount = await nodemailer.createTestAccount();
+                
+                    const transporter = nodemailer.createTransport({
+                        host: "smtp.gmail.com",
+                        port: 587,
+                        secure:false,
+                        auth: {
+                            user: 'jspmicoer2001@gmail.com',
+                            pass: 'ndqzzlnmqefvercp'
+                        },
+                      });
+                    
+                    const info = await transporter.sendMail({
+                        from: '"Food Delivary 👻" <gaurav@gmail.com>', // sender address
+                        to: req.body.email, // list of receivers
+                        subject: "Address Details", // Subject line
+                        text: `${user.firstname} your order for ${req.body.food} 
+                        had been successfully placed !` 
+                        // html: "<b>Hello world?</b>", // html body
+                      });
+                      
+                    console.log("Message sent: %s", info.messageId); 
+                }
+                
+                mail().catch((e) => console.log(e));
+    
+
+            })
+            .catch((e) => console.log(e));
+    
+
+
+
+            res.status(201).render("index");
+        }
+        
     }
     catch(err){
-        res.status(400).send(err);
+        res.status(400).send(`<h1>You are not registered please Register first<h1>
+        <a href="register.hbs""><button>Register</button></a>`);
+
+        // res.status(400).render("register");
     }
 })
 
